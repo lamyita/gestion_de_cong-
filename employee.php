@@ -6,7 +6,7 @@ if($_SESSION['ROLE']!=1){
 }
 if(isset($_GET['type']) && $_GET['type']=='delete' && isset($_GET['id'])){
 	$id=mysqli_real_escape_string($con,$_GET['id']);
-	mysqli_query($con,"delete from employee where id='$id'");
+	mysqli_query($con,"delete from employees where id='$id'");
 }
 $res=mysqli_query($con,"select * from employees where role=2 order by id desc");
 ?>

@@ -12,7 +12,7 @@ if(isset($_GET['id'])){
 	if($_SESSION['ROLE']==2 && $_SESSION['USER_ID']!=$id){
 		die('Access denied');
 	}
-	$res=mysqli_query($con,"select * from employee where id='$id'");
+	$res=mysqli_query($con,"select * from employees where id='$id'");
 	$row=mysqli_fetch_assoc($res);
 	$name=$row['name'];
 	$email=$row['email'];
@@ -30,9 +30,9 @@ if(isset($_POST['submit'])){
 	$address=mysqli_real_escape_string($con,$_POST['address']);
 	$birthday=mysqli_real_escape_string($con,$_POST['birthday']);
 	if($id>0){
-		$sql="update employee set name='$name',email='$email',mobile='$mobile',password='$password',department_id='$department_id',address='$address',birthday='$birthday' where id='$id'";
+		$sql="update employees set name='$name',email='$email',mobile='$mobile',password='$password',department_id='$department_id',address='$address',birthday='$birthday' where id='$id'";
 	}else{
-		$sql="insert into employee(name,email,mobile,password,department_id,address,birthday,role) values('$name','$email','$mobile','$password','$department_id','$address','$birthday','2')";
+		$sql="insert into employees(name,email,mobile,password,department_id,address,birthday,role) values('$name','$email','$mobile','$password','$department_id','$address','$birthday','2')";
 	}
 	mysqli_query($con,$sql);
 	header('location:employee.php');

@@ -11,10 +11,10 @@ if(isset($_GET['type']) && $_GET['type']=='update' && isset($_GET['id'])){
 	mysqli_query($con,"update `leave` set leave_status='$status' where id='$id'");
 }
 if($_SESSION['ROLE']==1){ 
-	$sql="select `leave`.*, employee.name,employee.id as eid from `leave`,employee where `leave`.employee_id=employee.id order by `leave`.id desc";
+	$sql="select `leave`.*, employees.name,employees.id as eid from `leave`,employees where `leave`.employee_id=employees.id order by `leave`.id desc";
 }else{
 	$eid=$_SESSION['USER_ID'];
-	$sql="select `leave`.*, employee.name ,employee.id as eid from `leave`,employee where `leave`.employee_id='$eid' and `leave`.employee_id=employee.id order by `leave`.id desc";
+	$sql="select `leave`.*, employees.name ,employees.id as eid from `leave`,employees where `leave`.employee_id='$eid' and `leave`.employee_id=employees.id order by `leave`.id desc";
 }
 $res=mysqli_query($con,$sql);
 ?>
