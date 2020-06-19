@@ -1,0 +1,20 @@
+body{
+
+background-image: url(images/backg.jpg);
+background-repeat: no-repeat;
+background-size: cover;
+}
+.logoo{
+    height: 40px;}
+    .login-form h1{
+        text-align: center;
+        font-size: medium;
+    }
+.login-form{
+ background-color: rgba(253, 253, 253, 0.562);
+    background-size: 100%;
+    height: 300px;
+    border-radius: 20px;
+    margin-top: 20px;
+
+}

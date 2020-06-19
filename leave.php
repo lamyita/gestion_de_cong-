@@ -6,6 +6,7 @@ if(isset($_GET['type']) && $_GET['type']=='delete' && isset($_GET['id'])){
 	mysqli_query($con,"delete from `leave` where id='$id'");
 }
 if(isset($_GET['type']) && $_GET['type']=='update' && isset($_GET['id'])){
+	///////////mysql_real_escape_string — Protège une commande SQL de la présence de caractères spéciaux
 	$id=mysqli_real_escape_string($con,$_GET['id']);
 	$status=mysqli_real_escape_string($con,$_GET['status']);
 	mysqli_query($con,"update `leave` set leave_status='$status' where id='$id'");

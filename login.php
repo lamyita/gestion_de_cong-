@@ -8,25 +8,23 @@ $msg="";
 if(isset($_POST['email']) && isset($_POST['password'])){
 	$email=mysqli_real_escape_string($con,$_POST['email']);
 	$password=mysqli_real_escape_string($con,$_POST['password']);
-	$res=mysqli_query($con,"select * from employees where email='$email' and password='$password'");
+	$res=mysqli_query($con,"select * from employees where email='$email'");
 	$count=mysqli_num_rows($res);
 	if($count>0){
-		$row=mysqli_fetch_assoc($res); /////////Récupère une ligne de résultat sous forme de tableau associatif
-		$_SESSION['ROLE']=$row['role']; 
-		$_SESSION['USER_ID']=$row['id']; 
-		$_SESSION['USER_NAME']=$row['name'];
-		header('location:index.php');
-		die();
-	}else{
-		$msg="Please enter correct login details"; ////// display this msg if i entre incorrect information
-	}
+      $row=mysqli_fetch_assoc($res); /////////Récupère une ligne de résultat sous forme de tableau associatif
+      if( hash('sha256', $password)== $row['password']){
+         $_SESSION['ROLE']=$row['role']; 
+	   	$_SESSION['USER_ID']=$row['id']; 
+		   $_SESSION['USER_NAME']=$row['name'];
+		   header('location:index.php');
+		   die();
+      }else{
+         $msg="Please enter correct login details";
+      }
+		
+   }
 }
 ?>
-
-
-
-
-
 <!doctype html>
 <html class="no-js" lang="">
    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -43,14 +41,17 @@ if(isset($_POST['email']) && isset($_POST['password'])){
       <link rel="stylesheet" href="assets/css/flag-icon.min.css">
       <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
       <link rel="stylesheet" href="assets/css/style.css">
+      <link rel="stylesheet" href ="logiiin.css">
+
       <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
    </head>
-   <body class="bg-dark">
+   <body class="bg-Yellow">
       <div class="sufee-login d-flex align-content-center flex-wrap">
          <div class="container">
             <div class="login-content">
                <div class="login-form mt-150">
                   <form method="post">
+                     <h1>Leave Management Sestyme</h1>
                      <div class="form-group">
                         <label>Email address</label>
                         <input type="email" name="email" class="form-control" placeholder="Email" required>

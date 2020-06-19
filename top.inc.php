@@ -26,6 +26,7 @@ if(!isset($_SESSION['ROLE'])){
       <link rel="stylesheet" href="assets/css/flag-icon.min.css">
       <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
       <link rel="stylesheet" href="assets/css/style.css">
+      <link rel="stylesheet" href ="logiiin.css">
       <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
    </head>
    <body>
@@ -36,7 +37,7 @@ if(!isset($_SESSION['ROLE'])){
                   <li class="menu-title">Menu</li>
                   <?php if($_SESSION['ROLE']==1){ ?>
 				  <li class="menu-item-has-children dropdown">
-                     <a href="index.php" > Department Master</a>
+                     <a href="index.php" >Services</a>
                   </li>
                   <li class="menu-item-has-children dropdown">
                      <a href="leave_type.php" > Leave Type Master</a>
